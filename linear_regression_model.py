@@ -1,11 +1,11 @@
-import numpy as np
+import random
 
 class LinearRegressionModel():
   '''Liner Regression: y = wx without any bias'''
 
   def __init__(self, learning_rate, epochs):
     self._learning_rate = learning_rate
-    self._w = np.random.randint(0,10)
+    self._w = random.randint(0,10)
     self._epochs = epochs
 
   def forward(self, x):
