@@ -3,24 +3,24 @@ from torch.autograd import Variable
 import numpy as np
 import pandas as pd
 
-#df = pd.read_csv('datasets/heart.csv')
+df = pd.read_csv('datasets/heart.csv')
 
 #df = df.reindex(np.random.permutation(df.index))
 #df.to_csv('datasets/heart.csv')
 
-#y = df.target.values
+y = df.target.values
 
-#x_data = df.drop(['target'], axis = 1)
+x= df.drop(['target'], axis = 1).values
 
 #x = (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
 
-data = np.loadtxt('datasets/heart.csv', delimiter=',', skiprows=1)
+#data = np.loadtxt('datasets/heart.csv', delimiter=',', skiprows=1)
 
-#y_data = Variable(torch.Tensor(y)).float()
-#x_data = Variable(torch.Tensor(x.values)).float()
+y_data = Variable(torch.from_numpy(y)).float()
+x_data = Variable(torch.from_numpy(x)).float()
 
-y_data = Variable(torch.from_numpy(data[:,[-1]])).float()
-x_data = Variable(torch.from_numpy(data[:, 0:13])).float()
+#y_data = Variable(torch.from_numpy(data[:,[-1]])).float()
+#x_data = Variable(torch.from_numpy(data[:, 0:13])).float()
 
 x_train = x_data[:250]
 y_train = y_data[:250]
